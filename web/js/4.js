@@ -1,10 +1,13 @@
 function Node(value){
+    // 节点的值
     this.value = value
+
     // 左右节点
     this.left = null;
     this.right = null;
 }
 
+// 构建树，定义根节点
 let root = new Node('A');
 
 let node1 = new Node('B');
