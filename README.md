@@ -1,4 +1,4 @@
-# 晓风轻面试系列  - 前端JS（1）
+# 晓风轻面试系列
 
 > 本系列文章首发在公众号 晓风轻技术小站（xiaofengqingjava），欢迎关注。
 
@@ -20,8 +20,8 @@
 
 - 公众号: xiaofengqingjava
 
-![晓风轻技术小站](xiaofengqingjava.jpg)
+![晓风轻技术小站](doc/xiaofengqingjava.jpg)
 
 - QQ群: 607679993
 
-![晓风轻技术小站](qq.png)
+![晓风轻技术小站](doc/qq.png)
