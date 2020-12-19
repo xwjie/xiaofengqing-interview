@@ -8,9 +8,15 @@
 ### javascript
 
 - [基础编程能力1](web-js1.md)
+- [基础编程能力2 - 回溯法](web-js2.md)
+- [基本语法](web-js3.md)
 
-- [基础编程能力2](web-js2.md)
+- 代码列表 
 
+
+https://github.com/xwjie/xiaofengqing-interview/tree/master/web/js
+
+## 后台
 
 ## 本章代码路径
 
