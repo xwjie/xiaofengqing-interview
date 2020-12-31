@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
+    <h1>body start</h1>
 <body>
 <script>
     function sleep(sleepTime) {
@@ -25,8 +25,17 @@
     }
 
 </script>
-<script src="./js-async-2000.js" async></script>
-<script defer="ture" src="./js-defer-2000.js"></script>
+<script>console.log("load js1");</script>
+<script src="./js-async-1500.js" async></script>
+<script>console.log("load js2");</script>
+<script src="./js-sync-1000.js"></script>
+<script>console.log("load js3");</script>
+<script defer  src="./js-defer-2000.js"></script>
+<script>console.log("load js end");</script>
+<h1 id="bodyEnd">body end</h1>
+<script>
+console.log("html end: " + document.getElementById("bodyEnd").style.display);
+</script>
 </body>
 
 </html>

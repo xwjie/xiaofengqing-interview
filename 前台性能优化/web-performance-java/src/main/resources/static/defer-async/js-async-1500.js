@@ -1,4 +1,4 @@
-var time = 2000;
+var time = 1500;
 
 console.log("js-async-" + time + " start");
 
