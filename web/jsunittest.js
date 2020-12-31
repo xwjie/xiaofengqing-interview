@@ -1,5 +1,7 @@
 // assert: nodejs内置断言模块
-var assert  = require("assert");
+const assert  = require("assert");
+
+console.log(assert);
 
 const add = function(a,b){return a+b};
 
@@ -11,7 +13,6 @@ describe("加法函数测试", function() {
     
     // it: 定义一个测试用例
     it("1 加 1 应该等于 2", function() {
-
         assert.equal(add(1, 1), 2);
     });
     
