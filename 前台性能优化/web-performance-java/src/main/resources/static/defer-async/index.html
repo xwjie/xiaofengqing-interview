@@ -8,8 +8,8 @@
     <title>Document</title>
 </head>
 
-    <h1>defer async DOMContentLoaded</h1>
-    <h1>body start</h1>
+<h1>defer async DOMContentLoaded</h1>
+<h1 id="bodyStart">body start</h1>
 <body>
 <script>
     function sleep(sleepTime) {
@@ -21,9 +21,9 @@
         console.log('DOMContentLoaded', performance);
     });
 
-    window.onload=function(){
+    window.onload = function () {
         var usetime = performance.timing.loadEventStart - performance.timing.fetchStart;
-        console.log("load event: "+usetime, performance);
+        console.log("load event: " + usetime, performance);
     }
 
 </script>
@@ -36,7 +36,9 @@
 <!--<script>console.log("load js end");</script>-->
 <h1 id="bodyEnd">body end</h1>
 <script>
-console.log("html end: " + document.getElementById("bodyEnd").style.display);
+    console.log("html end"
+        + ", bodyStart:" + window.getComputedStyle(document.getElementById("bodyStart"))['display']
+        + ", bodyEnd:" + window.getComputedStyle(document.getElementById("bodyEnd"))['display']);
 </script>
 </body>
 
