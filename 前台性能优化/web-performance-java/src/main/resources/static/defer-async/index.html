@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
+    <h1>defer async DOMContentLoaded</h1>
     <h1>body start</h1>
 <body>
 <script>
@@ -29,9 +31,9 @@
 <script src="./js-async-1500.js" async></script>
 <script>console.log("load js2");</script>
 <script src="./js-sync-1000.js"></script>
-<script>console.log("load js3");</script>
-<script defer  src="./js-defer-2000.js"></script>
-<script>console.log("load js end");</script>
+<!--<script>console.log("load js3");</script>-->
+<!--<script defer  src="./js-defer-2000.js"></script>-->
+<!--<script>console.log("load js end");</script>-->
 <h1 id="bodyEnd">body end</h1>
 <script>
 console.log("html end: " + document.getElementById("bodyEnd").style.display);

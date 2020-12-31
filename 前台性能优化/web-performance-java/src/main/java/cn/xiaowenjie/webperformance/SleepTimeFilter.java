@@ -26,7 +26,9 @@ public class SleepTimeFilter implements Filter {
                          FilterChain filterChain) {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        int millis = new Random().nextInt(2000);
+        int millis = getTimeFromURI(request.getRequestURI());
+        // int millis = new Random().nextInt(2000);
+        // int millis = 1000;
         System.out.println("SleepTimeFilter , URL: "
             + request.getRequestURI()
             + ", method: " + request.getMethod()
@@ -36,6 +38,18 @@ public class SleepTimeFilter implements Filter {
 
         //执行
         filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    private int getTimeFromURI(String requestURI) {
+        final String filename = requestURI.substring(requestURI.lastIndexOf('/'));
+
+        int start = filename.lastIndexOf('-');
+        if (start < 0) {
+            return new Random().nextInt(2000);
+        }
+
+        int end = filename.lastIndexOf('.');
+        return Integer.parseInt(filename.substring(start + 1, end));
     }
 
     @Override
