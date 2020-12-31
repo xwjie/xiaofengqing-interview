@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    function sleep(sleepTime) {
+        for (var start = new Date; new Date - start <= sleepTime;) {
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded', performance);
+    });
+
+    window.onload=function(){
+        var usetime = performance.timing.loadEventStart - performance.timing.fetchStart;
+        console.log("load event: "+usetime, performance);
+    }
+
+</script>
+<script src="./js-async-2000.js" async></script>
+<script defer="ture" src="./js-defer-2000.js"></script>
+</body>
+
+</html>

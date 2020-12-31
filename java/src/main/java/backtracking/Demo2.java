@@ -1,6 +1,7 @@
 package backtracking;
 
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Stack;
 public class Demo2 {
     public static void main(String[] args) {
         // 打印1-N的排列组合
-        int[] numbers = {5,2,6,4};
+        int[] numbers = {5, 2, 6, 4};
 
         System.out.println("排列");
         Stack<Integer> tempNumbers = new Stack<>();
@@ -39,8 +40,9 @@ public class Demo2 {
 
     /**
      * 组合第二种写法
-     *  @param number
-     * @param index   从哪个数字开始
+     *
+     * @param number
+     * @param index       从哪个数字开始
      * @param tempNumbers
      * @param result2
      */
@@ -101,6 +103,13 @@ public class Demo2 {
         // 不能用int[]，编译不通过
         Integer[] ints = new Integer[tempNumbers.size()];
         tempNumbers.toArray(ints);
+
+//        for (Object o : tempNumbers.toArray()) {
+//            System.out.println(o.getClass());
+//        }
+
+        // java中的强制类型转换只是针对单个对象的，将整个数组转换成另外一种类型的数组是不行的
+        // System.out.println((Integer[])tempNumbers.toArray());
 
         result.add(ints);
     }
