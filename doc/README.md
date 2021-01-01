@@ -18,6 +18,10 @@ https://github.com/xwjie/xiaofengqing-interview/tree/master/web/js
 
 ## 后台
 
+## 面试技巧
+
+[如何在细节上给面试官留下专业的好印象？](interview-tip.md)
+
 ## 本章代码路径
 
 [https://github.com/xwjie/xiaofengqing-interview/](https://github.com/xwjie/xiaofengqing-interview/)
