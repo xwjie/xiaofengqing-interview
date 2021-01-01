@@ -7,7 +7,9 @@
 当时面试的是前台开发，按惯例先做一道JS的基础逻辑题目。难度中等，题目如下：
 
 ```
-编写一个查找树节点的函数，输入树的根节点和要查找的节点的值，返回根节点到该节点的路径，如果找不到，返回[]。
+编写一个查找树节点的函数，输入树的根节点
+和要查找的节点的值，返回根节点到该节点的
+路径，如果找不到，返回[]。
 
 树如下图。
 
@@ -26,56 +28,15 @@
 
 考虑到前台的数据结构能力偏弱，我给出了如何定义树的参考，可以直接copy来使用：
 
-```js
-var root = {
-    val: 4,
-    left: {
-        val: 2,
-        left:{
-            val:1
-        },
-        right:{
-            val:3
-        }
-    },
-    right:{
-        val:6,
-        left:{
-            val: 5
-        }
-    }
-};
-```
+![](code-img/code-tree.png)
 
-题目的难度对于后台来说是入门，对于前台来说是中等，大家有兴趣可以自己做一些。在所有面试者里面，做很好的做出来不到50%，不管多少年工作经验。不要小看了他的难度，实际的结果是大部分在提示下，花了进45-60分钟才勉强完成。大家可以先不要看下面的答案自己花30分钟做一下试试。（PS：这还是在用面试者自己的电脑编写，IDE提示、编译、调试这些都有的情况下。）
+题目的难度对于后台来说是入门，对于前台来说是中等，大家有兴趣可以自己做一些。在所有面试者里面，做很好的做出来不到50%，不管多少年工作经验。不要小看了他的难度，实际的结果是大部分在提示下，花了近45-60分钟才勉强完成。大家可以先不要看下面的答案自己花30分钟做一下试试。（PS：这还是在用面试者自己的电脑编写，IDE提示、编译、调试这些都有的情况下。）
 
 当时这位面试的同学，很快就做出来了，应该是我这么多次面试里面最快写完代码的，函数写完不到15分钟。由于印象深刻，他的答案我现在还能记起来。
 
 面试者的答案：
-```js
 
-function findNode(root, value) {
-    var _find = function (node, value, path) {
-        if (!node) {
-            return;
-        }
-
-        var newPath = [...path, node.val]
-
-        // 找到
-        if (node.val === value) {
-            return newPath;
-        }
-
-        // 递归查找
-        return _find(node.left, value, newPath) || _find(node.right, value, newPath);
-    }
-
-    return _find(root, value, []) || [];
-}
-
-console.log(findNode(root, 5));
-```
+![](code-img/code-findnode.png)
 
 整个过程基本上不需要调试，编码行云流水，一气呵成。看到这里，我已经露出了欣慰的笑容，代码简洁易读，耗时短，还使用了es6的一些新特性，这位同学将来必是国家的栋梁之才！到这个时候，他只是简单测试了一下，还没有说全部完成，我已经准备往下一个环节走了。
 
@@ -88,27 +49,8 @@ console.log(findNode(root, 5));
 这位同学究竟做了什么骚操作呢？他写单元测试了！他用mocha（抹茶）框架进行了完整的测试！
 
 测试代码如下：
-```js
-const assert = require("assert");
 
-describe("find node test", function () {
-    it("find 5", function () {
-        assert.deepEqual(findNode(root, 5), [4, 6, 5]);
-    });
-
-    it("find 2", function () {
-        assert.deepEqual(findNode(root, 2), [4, 2]);
-    });
-
-    it("find 7", function () {
-        assert.deepEqual(findNode(root, 7), []);
-    });
-
-    it("find root", function () {
-        assert.deepEqual(findNode(root, 4), [4]);
-    });
-});
-```
+![](code-img/code-mocha.png)
 
 为什么这一点会touch到我的heart呢？其实，做过开发的同学都知道，现实中真正能给自己代码做完整的单元测试的程序员并不多，更加不用说前台开发了！更加不要说是自发的！有相当一部分人做单元测试都是公司领导要求看指标的才做的，代码要写到能做细粒度的单元测试其实不是那么容易的。他自发编写js的单元测试用例并用现在流行的测试框架测试，这一点让我感觉到他是一个专业的程序员，编程素养一点不比后台的差！而且对于面试官来说，看框架的测试结果明显比看log方便，这也算你好我也好吧。
 

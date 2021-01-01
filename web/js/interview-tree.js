@@ -31,7 +31,8 @@ function findNode(root, value) {
         }
 
         // 递归查找
-        return _find(node.left, value, newPath) || _find(node.right, value, newPath);
+        return _find(node.left, value, newPath) 
+            || _find(node.right, value, newPath);
     }
 
     return _find(root, value, []) || [];
