@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+<h1>DOMContentLoadedBeforeDefer</h1>
+<h1 id="bodyStart">body start</h1>
+<script>
+    function sleep(sleepTime) {
+        for (var start = new Date; new Date - start <= sleepTime;) {
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded', performance);
+    });
+
+    window.onload = function () {
+        var usetime = performance.timing.loadEventStart - performance.timing.fetchStart;
+        console.log("load event: " + usetime, performance);
+    }
+
+</script>
+<script>console.log("load js1");</script>
+<script src="/js/async-load-500-sleep-1000.js" async></script>
+<script>console.log("load js2");</script>
+<script src="/js/sync-load-200-sleep-1000.js"></script>
+<h1 id="bodyEnd">body end</h1>
+</body>
+
+</html>

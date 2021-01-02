@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -15,6 +14,9 @@ import java.util.Random;
  */
 @Component
 public class SleepTimeFilter implements Filter {
+
+    public static final String LOAD = "load-";
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -25,8 +27,9 @@ public class SleepTimeFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain filterChain) {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        final String filename = request.getRequestURI().substring(request.getRequestURI().lastIndexOf('/'));
 
-        int millis = getTimeFromURI(request.getRequestURI());
+        int millis = getLoadTimeFromFileName(filename);
         // int millis = new Random().nextInt(2000);
         // int millis = 1000;
         System.out.println("SleepTimeFilter , URL: "
@@ -40,16 +43,23 @@ public class SleepTimeFilter implements Filter {
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
-    private int getTimeFromURI(String requestURI) {
-        final String filename = requestURI.substring(requestURI.lastIndexOf('/'));
+    public static int getLoadTimeFromFileName(final String filename) {
 
-        int start = filename.lastIndexOf('-');
+        int start = filename.indexOf(LOAD);
+
         if (start < 0) {
-            return new Random().nextInt(2000);
+            return new Random().nextInt(1000);
         }
 
-        int end = filename.lastIndexOf('.');
-        return Integer.parseInt(filename.substring(start + 1, end));
+        start += +LOAD.length();
+
+        int end = filename.indexOf('-', start);
+
+        if (end < 0) {
+            end = filename.indexOf('.', start);
+        }
+
+        return Integer.parseInt(filename.substring(start, end));
     }
 
     @Override

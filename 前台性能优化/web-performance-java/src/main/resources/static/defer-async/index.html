@@ -7,39 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
-<h1>defer async DOMContentLoaded</h1>
-<h1 id="bodyStart">body start</h1>
 <body>
-<script>
-    function sleep(sleepTime) {
-        for (var start = new Date; new Date - start <= sleepTime;) {
-        }
-    }
+<h1>defer async DOMContentLoaded</h1>
 
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('DOMContentLoaded', performance);
-    });
+<ul>
+    <li>defer会影响DOMContentLoaded事件时间。</li>
 
-    window.onload = function () {
-        var usetime = performance.timing.loadEventStart - performance.timing.fetchStart;
-        console.log("load event: " + usetime, performance);
-    }
+    <li><a href="DOMContentLoadedBeforeDefer.html">DOMContentLoadedBeforeDefer</a></li>
+    <li><a href="DOMContentLoadedAfterDefer.html">DOMContentLoadedAfterDefer</a></li>
+</ul>
 
-</script>
-<script>console.log("load js1");</script>
-<script src="./js-async-1500.js" async></script>
-<script>console.log("load js2");</script>
-<script src="./js-sync-1000.js"></script>
-<!--<script>console.log("load js3");</script>-->
-<!--<script defer  src="./js-defer-2000.js"></script>-->
-<!--<script>console.log("load js end");</script>-->
-<h1 id="bodyEnd">body end</h1>
-<script>
-    console.log("html end"
-        + ", bodyStart:" + window.getComputedStyle(document.getElementById("bodyStart"))['display']
-        + ", bodyEnd:" + window.getComputedStyle(document.getElementById("bodyEnd"))['display']);
-</script>
+
+<ul>
+    <li>async 不会影响DOMContentLoaded事件时间。
+
+    <li><a href="DOMContentLoadedBeforeAsync.html">DOMContentLoadedBeforeAsync</a></li>
+    <li><a href="DOMContentLoadedAfterAsync.html">DOMContentLoadedAfterAsync</a></li>
+
+</ul>
 </body>
 
 </html>
