@@ -10,7 +10,7 @@
 
 
 <body>
-<h1>DOMContentLoadedAfterAsync</h1>
+<h1>DOMContentLoaded Multi Defer，多个之间按顺序执行</h1>
 <h1 id="bodyStart">body start</h1>
 <script>
     function sleep(sleepTime) {
@@ -29,7 +29,9 @@
 
 </script>
 <script>console.log("load js1");</script>
-<script src="/js/async-load-500-sleep-1000.js" async></script>
+<script src="/js/defer1-load-3000-sleep-500.js" defer></script>
+<script src="/js/defer2-load-1000-sleep-1000.js" defer></script>
+<script src="/js/defer3-load-300-sleep-2000.js" defer></script>
 <script>console.log("load js2");</script>
 <script src="/js/sync-load-200-sleep-1000.js"></script>
 <h1 id="bodyEnd">body end</h1>
