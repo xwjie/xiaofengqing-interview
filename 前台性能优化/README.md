@@ -68,3 +68,5 @@ app.update = function (timestamp) {
 - 优化前后重排和重绘次数对比。
 
 ![优化前后重排和重绘次数对比。](images/relayout-css-recal.png)
+
+- MVVM框架的虚拟Dom主要是避免多余的重排和重绘
