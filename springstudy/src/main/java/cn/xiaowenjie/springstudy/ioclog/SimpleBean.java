@@ -29,6 +29,7 @@ public class SimpleBean implements BeanNameAware, InitializingBean {
     }
 
     @Override
+    public void afterPropertiesSet() throws Exception {
         System.out.println("SimpleBean afterPropertiesSet, count:" + (++counts));
     }
 }
